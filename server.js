@@ -1,24 +1,57 @@
-const connect = require('connect');
-const app = connect();
+import debug from 'debug';
+debug('commp-229');
 
-// logger middleware 
-function logger(req, res, next) {
-    // req.method is get , req.url is the forward slash
-    console.log(req.method,req.url);  // what we receive from the broweser
-    next();  // moves to next middleware
-}
+import http from 'http';
+// import the app
+import app from './app/app.js';  //have to include the extension ".js"
 
-function goodbyeWorld(req, res, next) {
-    res.setHeader('Content-Type','text/html');  //  
-    res.end('GoodBye World')
-}
+const PORT = normilizePort(process.env.PORT || 3000);  // passes port info 
+app.set('port',PORT);
 
-function helloWorld(req,res,next) {
-    res.setHeader('Content-Type','text/html')
-    res.end('Hello World');  // ends request 
+const server = http.createServer(app);
+
+server.listen(PORT);
+server.on('error',onError);
+server.on('listening', onListening);
+
+// HELPER FUNCTIONS 
+function normilizePort(val) {
+    let port = parseInt(val, 10); // 2nd part is based 10
+    if(isNaN(port)) {
+        return val;
+    }
+
+    if (port >= 0) {
+        return port;
+    }
+    return false;
 }
-app.use(logger); // always call logger
-app.use('/hello',helloWorld); // if pass hello, call respond with helloWorld function
-app.use('/goodbye',goodbyeWorld);
-app.listen(3000);
-console.log('Sever running at http://localhost:3000');
+function onError() {
+    if(error.syscall !== 'listen') {
+        throw error;
+    }
+    //teriniary if statemtn 
+    // bind is checking if we have a Pipe or Port, Pipe is a string, port is a number 
+    let bind = typeof port === 'string'
+        ? 'Pipe ' + port   // true statemetn 
+        : 'Port ' + port;  // false statement 
+    switch (error.code){
+        case 'EACESS':
+            console.error(bind + ' requires elevated priviledges');
+            process.exit(1);
+            break;
+        case 'EADDINUSE': // hows bind or port is in use
+            console.error(bind + ' is already in use');
+            process.exit(1);
+            break;
+        default:
+            throw error;
+    } // end switch
+} // end function onError()
+
+function onListening() {
+    let addr = server.address();
+    let bind = 'pipe ' + addr;
+    debug('Listening on ' + bind);
+    console.log('Listening on ', addr);
+}
