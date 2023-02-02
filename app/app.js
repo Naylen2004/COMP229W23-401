@@ -17,6 +17,25 @@ import indexRouter from '../app/routes/index.js';
 // Instantiat the expresss application
 const app = express();
 
+// Setup Express Middleware
+
+// EJS Setup
+app.set('views', path.join(_dirname, '/views'));
+app.set('view engine','ejs');
+
+// General Middlewares
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+app.use(cookieParser());
+app.use(express.static(path.join(_dirname, '../public')));
+app.use(session({
+    secret: Secret,
+    saveUninitialized: false,
+    resave: false
+}));
+
+
 // Use Routs 
 app.use('/',indexRouter);
 
