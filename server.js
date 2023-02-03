@@ -1,5 +1,5 @@
 import debug from 'debug';
-debug('commp-229');
+debug('assignment1');
 
 
 import http from 'http';
