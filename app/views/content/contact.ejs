@@ -1,3 +1,50 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
     <h1><%= title %></h1>
-</div>
+</div> -->
+
+<!-- <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div> -->
+
+<!-- *
+ * File name:    contact.ejs **   views -> content  
+ * Student name: Krishna Ramlakhan
+ * Student ID:   818583171 
+ * Date:         Feb 3, 2023
+ *
+ * This page will display a form for viewers to fill out
+ * -->  
+    
+</head>
+    <link rel="stylesheet" href="css/form.css">
+    <body>
+    
+    <h3>Contact Form</h3>
+    
+    <div class="container">
+      <form action="/action_page.php">
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" name="firstname" placeholder="Your name..">
+    
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+        <label for="Number">Contact number</label>
+        <input type="text" id="number" name="number" placeholder="Your contact number..">
+        
+        <label for="email">Email Address</label>
+        <input type="text" id="email" name="email" placeholder="Your email address..">
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Please leave a message.." style="height:200px"></textarea>
+    
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+    
+    </body>

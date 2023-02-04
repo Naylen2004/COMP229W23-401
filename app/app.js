@@ -1,3 +1,10 @@
+/**
+ * File name:    app.js **  app 
+ * Student name: Krishna Ramlakhan
+ * Student ID:   818583171 
+ * Date:         Feb 3, 2023
+ */
+
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
@@ -28,6 +35,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
+app.use(express.static(path.join(_dirname, 'public')));
 app.use(express.static(path.join(_dirname, '../public')));
 app.use(session({
     secret: Secret,

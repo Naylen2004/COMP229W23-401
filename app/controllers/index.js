@@ -1,7 +1,10 @@
-//import res from "express/lib/response";
 
-// Index Controller
-
+/**
+ * File name:    index.js **  Controller 
+ * Student name: Krishna Ramlakhan
+ * Student ID:   818583171 
+ * Date:         Feb 3, 2023
+ */
 
 export function displayHomePage(req, res,next) {
     res.render('index', {title: 'Home', page: 'home'});

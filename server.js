@@ -1,3 +1,12 @@
+/**
+ * File name:    server.js **  
+ *  
+ * Student name: Krishna Ramlakhan
+ * Student ID:   818583171 
+ * Date:         Feb 3, 2023
+ *
+ *  
+ **/
 import debug from 'debug';
 debug('assignment1');
 
