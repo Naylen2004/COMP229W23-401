@@ -6,3 +6,4 @@
  */
 
 export const Secret = "MySecret";  // use to scramble any info insesson
+export const MongoURI = "mongodb://127.0.0.1/media"

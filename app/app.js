@@ -15,11 +15,24 @@ import path, {dirname} from 'path';
 import { fileURLToPath } from 'url';
 const _dirname = dirname(fileURLToPath(import.meta.url));
 
+// Import Mongoose module
+import mongoose from 'mongoose';
+
 //Configuration Module - s/b instance for config module
-import { Secret } from '../config/index.js'; 
+import { Secret, MongoURI } from '../config/index.js'; 
 
 // Import Routes
 import indexRouter from '../app/routes/index.js';
+import moviesRouter from '../app/routes/movies.js';
+
+// Complete DB Configuration
+mongoose.connect(MongoURI);
+const db = mongoose.connection;
+
+// Database Listeners
+db.on('open', () => console.log(`Connected to MongoDB at ${MongoURI} `));
+db.on('error', () => console.log("Mongo Connection Error"));
+
 
 // Instantiat the expresss application
 const app = express();
@@ -46,6 +59,7 @@ app.use(session({
 
 // Use Routs 
 app.use('/',indexRouter);
+app.use('/', moviesRouter);
 
 export default app;  // export app variable as default module 
 
