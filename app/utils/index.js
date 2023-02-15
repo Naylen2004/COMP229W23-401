@@ -5,3 +5,11 @@ export function UserDisplayName(req)  {
     }
     return ''
 }
+
+// can add AuthGuard to any route you want to protect 
+export function AuthGuard(req,res,next) {
+    if(!req.isAuthenticated()){
+        return res.redirect('/login')
+    }
+    next();
+}

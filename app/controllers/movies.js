@@ -1,5 +1,5 @@
 import movieModel from '../models/movies.js';
-
+import {UserDisplayName } from "../utils/index.js";
 
 //R ead Operations
 export function DisplayMoviesList(req, res, next){
@@ -11,7 +11,7 @@ export function DisplayMoviesList(req, res, next){
 
         console.log(movieCollection);
 
-        res.render('index', {title: 'Movie List', page: 'movies/list', movies: movieCollection })
+        res.render('index', {title: 'Movie List', page: 'movies/list', movies: movieCollection ,displayName: UserDisplayName(req)})
     })
 }
 
@@ -51,7 +51,7 @@ export function DisplayMoviesEditPage(req, res, next){
             res.end(error);
         }
 
-        res.render('index', {title: 'Edit Movie', page: 'movies/edit', movie})
+        res.render('index', {title: 'Edit Movie', page: 'movies/edit', movie,displayName: UserDisplayName(req)})
     })    
 }
 
